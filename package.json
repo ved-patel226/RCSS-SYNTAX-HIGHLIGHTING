@@ -1,0 +1,25 @@
+{
+  "name": "rcss",
+  "displayName": "RCSS: Syntax Highlighting",
+  "description": "Adds syntax highlighting to the RCSS language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "rcss",
+      "aliases": ["RCSS", "rcss"],
+      "extensions": [".rcss"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "rcss",
+      "scopeName": "source.rcss",
+      "path": "./syntaxes/rcss.tmLanguage.json"
+    }]
+  }
+}

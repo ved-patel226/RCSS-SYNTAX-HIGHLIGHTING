@@ -1,0 +1,51 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "RCSS",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.rcss",
+				"match": "\\b(fn|let)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.rcss",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.rcss",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.rcss",
+					"begin": "/\\*",
+					"end": "\\*/",
+					"patterns": [
+						{
+							"name": "comment.block.documentation.rcss",
+							"match": "\\*\\*.*"
+						}
+					]
+				}
+			]
+		}
+		
+	},
+	"scopeName": "source.rcss"
+}
