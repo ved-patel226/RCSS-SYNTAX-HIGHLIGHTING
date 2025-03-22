@@ -3,39 +3,36 @@
 	"name": "RCSS",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#strings"
 		},
 		{
-			"include": "#strings"
+			"include": "#keywords"
 		},
 		{
 			"include": "#comments"
 		},
 		{
             "include": "#variables"
-        }
+        },
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#types"
+		}
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.rcss",
-				"match": "\\b(fn|let)\\b"
-			},
+			"patterns": [
 			{
 				"name": "keyword.at-rule.rcss",
 				"match": "@\\w+"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.rcss",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.rcss",
-					"match": "\\\\."
-				}
-			]
+			},
+			{
+				"name": "keyword.other.rust storage.type.rust",
+				"match": "\\b(let)\\b"
+			}
+		]
 		},
 		"comments": {
 			"patterns": [
@@ -54,16 +51,73 @@
 		},
 		"variables": {
             "patterns": [
-                {
-                    "name": "variable.declaration.rcss",
-                    "match": "(?<=\\blet\\s+)[_a-zA-Z][_a-zA-Z0-9]*\\b"
-                },
-                {
-                    "name": "variable.other.rcss",
-                    "match": "&(\w+)(?=;)"
-                }
+				{
+					"name": "variable.declaration.rcss",
+					"match": "(?<=\\blet\\s+)[_a-zA-Z][_a-zA-Z0-9]*\\b"
+				},
+				{
+					"name": "variable.other.rcss",
+					"match": "&(\\w+)"
+				}
             ]
-        }
+        },
+		"functions": {
+			"patterns": [
+				{
+					"comment": "function definition",
+					"name": "meta.function.definition.rcss",
+					"begin": "\\b(fn)\\s+((?:r#(?!crate|[Ss]elf|super))?[A-Za-z0-9_]+)((\\()|(<))",
+					"beginCaptures": {
+						"1": {
+							"name": "keyword.other.fn.rcss"
+						},
+						"2": {
+							"name": "entity.name.function.rcss"
+						},
+						"4": {
+							"name": "punctuation.brackets.round.rcss"
+						},
+						"5": {
+							"name": "punctuation.brackets.angle.rcss"
+						}
+					},
+					"end": "(\\{)|(;)"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"comment": "Value highlighting in property:value",
+					"match": "(?<!^let.*)([a-zA-Z-]+)(?=\\s*:)",
+					"captures": {
+					  "1": {
+						"name": "entity.name.type.rust"
+					  }
+					}
+				},
+				{
+					"comment": "Selectors ex: (h1, to, from, .div)",
+					"match": "(?<!@keyframes\\s+)\\b([.#]?[a-zA-Z][a-zA-Z0-9-_]*)\\b(?=\\s*\\{)",
+					"captures": {
+						"1": {
+							"name": "entity.name.function.rcss"
+						}
+					}
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.rcss",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.rcss",
+					"match": "\\\\."
+				}
+			]
+		}
 	},
 	"scopeName": "source.rcss"
 }
