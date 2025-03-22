@@ -2,8 +2,9 @@
   "name": "rcss",
   "displayName": "Syntax Highlighting for RCSS",
   "description": "Adds syntax highlighting to the RCSS language",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "rcss-syntax-highlighting",
+  "icon": "logo.png",
   "engines": {
     "vscode": "^1.98.0"
   },
