@@ -60,7 +60,7 @@
                 },
                 {
                     "name": "variable.other.rcss",
-                    "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*\\b"
+                    "match": "&(\w+)(?=;)"
                 }
             ]
         }
