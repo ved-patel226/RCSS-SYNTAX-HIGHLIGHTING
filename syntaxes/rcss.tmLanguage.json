@@ -10,13 +10,20 @@
 		},
 		{
 			"include": "#comments"
-		}
+		},
+		{
+            "include": "#variables"
+        }
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.rcss",
 				"match": "\\b(fn|let)\\b"
+			},
+			{
+				"name": "keyword.at-rule.rcss",
+				"match": "@\\w+"
 			}]
 		},
 		"strings": {
@@ -44,8 +51,19 @@
 					]
 				}
 			]
-		}
-		
+		},
+		"variables": {
+            "patterns": [
+                {
+                    "name": "variable.declaration.rcss",
+                    "match": "(?<=\\blet\\s+)[_a-zA-Z][_a-zA-Z0-9]*\\b"
+                },
+                {
+                    "name": "variable.other.rcss",
+                    "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*\\b"
+                }
+            ]
+        }
 	},
 	"scopeName": "source.rcss"
 }
